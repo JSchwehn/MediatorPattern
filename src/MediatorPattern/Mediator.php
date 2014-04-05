@@ -70,9 +70,11 @@ namespace MediatorPattern{
             foreach($this->events[$eventName] as $colleague) {
                 $data = $colleague->execute($eventName, $data);
                 if($colleague->hasStopped()) {
-                    break;
+                    return $data;
                 }
             }
+
+            return $data;
         }
     }
 }
